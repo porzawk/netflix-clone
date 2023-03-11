@@ -42,7 +42,7 @@ const SearchBox = () => {
 const Account = () => {
   return (
     <Link href={`/account`}>
-      <div className="flex gap-2 py-2 px-3 items-center rounded-lg text-black dark:text-white hover:bg-gray-700">
+      <div className="flex gap-2 py-2 px-3 items-center rounded-lg text-black dark:text-gray-200 hover:bg-red-700">
         <span>Account</span>
         <FaUserCircle size={20} />
       </div>
@@ -52,7 +52,7 @@ const Account = () => {
 
 const Navbar = () => {
   return (
-    <nav className="fixed flex justify-between items-center w-full h-16 z-20 pl-56 bg-[#272727]">
+    <nav className="fixed flex justify-between items-center w-full h-12 z-20 pl-56 bg-[#272727]">
       <div className="ml-2">
         <ThemeToggleButton />
       </div>

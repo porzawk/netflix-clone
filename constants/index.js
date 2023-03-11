@@ -1,13 +1,38 @@
-import { BsFilm, BsStar, BsCalendar2Event } from "react-icons/bs";
+import {
+  BsFilm,
+  BsStar,
+  BsCalendar2Event,
+  BsCompass,
+  BsEmojiLaughing,
+  BsCameraReels,
+  BsMagic,
+  BsHeart,
+} from "react-icons/bs";
+import { TbAccessPoint, TbSwords } from "react-icons/tb";
+import { GiPunch, GiPistolGun, GiDrippingKnife } from "react-icons/gi";
+import { GoGistSecret } from "react-icons/go";
+import { RiMickeyLine, RiTimeLine, RiGhostLine } from "react-icons/ri";
+import { FaRegSadCry, FaHatCowboy } from "react-icons/fa";
+import {
+  MdOutlineFamilyRestroom,
+  MdOutlineScience,
+  MdOutlineMonitor,
+} from "react-icons/md";
+import { IoMusicalNoteOutline } from "react-icons/io5";
 
 const categories = [
   {
+    id: "now_playing",
+    title: "Now Playing",
+    icon: <TbAccessPoint />,
+  },
+  {
     id: "popular",
-    title: "Web Developer",
+    title: "Popular",
     icon: <BsFilm />,
   },
   {
-    id: "topRating",
+    id: "top_rated",
     title: "Top Rating",
     icon: <BsStar />,
   },
@@ -22,97 +47,97 @@ const genres = [
   {
     id: 28,
     title: "Action",
-    icon: <BsFilm />,
+    icon: <GiPunch />,
   },
   {
     id: 12,
     title: "Adventure",
-    icon: <BsStar />,
+    icon: <BsCompass />,
   },
   {
     id: 16,
     title: "Animation",
-    icon: <BsCalendar2Event />,
+    icon: <RiMickeyLine />,
   },
   {
     id: 35,
     title: "Comedy",
-    icon: <BsCalendar2Event />,
+    icon: <BsEmojiLaughing />,
   },
   {
     id: 80,
     title: "Crime",
-    icon: <BsCalendar2Event />,
+    icon: <GiPistolGun />,
   },
   {
     id: 99,
     title: "Documentary",
-    icon: <BsCalendar2Event />,
+    icon: <BsCameraReels />,
   },
   {
     id: 18,
     title: "Drama",
-    icon: <BsCalendar2Event />,
+    icon: <FaRegSadCry />,
   },
   {
     id: 10751,
     title: "Family",
-    icon: <BsCalendar2Event />,
+    icon: <MdOutlineFamilyRestroom />,
   },
   {
     id: 14,
     title: "Fantasy",
-    icon: <BsCalendar2Event />,
+    icon: <BsMagic />,
   },
   {
     id: 36,
     title: "History",
-    icon: <BsCalendar2Event />,
+    icon: <RiTimeLine />,
   },
   {
     id: 27,
     title: "horor",
-    icon: <BsCalendar2Event />,
+    icon: <RiGhostLine />,
   },
   {
     id: 10402,
     title: "Music",
-    icon: <BsCalendar2Event />,
+    icon: <IoMusicalNoteOutline />,
   },
   {
     id: 9648,
     title: "Mystery",
-    icon: <BsCalendar2Event />,
+    icon: <GoGistSecret />,
   },
   {
     id: 10749,
     title: "Romance",
-    icon: <BsCalendar2Event />,
+    icon: <BsHeart />,
   },
   {
     id: 878,
     title: "Science Fiction",
-    icon: <BsCalendar2Event />,
+    icon: <MdOutlineScience />,
   },
   {
     id: 10770,
     title: "TV Movie",
-    icon: <BsCalendar2Event />,
+    icon: <MdOutlineMonitor />,
   },
   {
     id: 53,
     title: "Thriller",
-    icon: <BsCalendar2Event />,
+    icon: <GiDrippingKnife />,
   },
   {
     id: 10752,
     title: "War",
-    icon: <BsCalendar2Event />,
+    icon: <TbSwords />,
   },
   {
     id: 37,
     title: "Western",
-    icon: <BsCalendar2Event />,
+    icon: <FaHatCowboy />,
   },
 ];
 
