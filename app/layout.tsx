@@ -17,7 +17,12 @@ export default function RootLayout({
         <Navbar />
         {/* Sidebar */}
         <Sidebar />
-        {children}
+
+        <div className="pl-56 pt-12 h-screen bg-white dark:bg-black">
+          <div className="h-full overflow-y-auto p-4 dark:text-white">
+            {children}
+          </div>
+        </div>
       </body>
     </html>
   );

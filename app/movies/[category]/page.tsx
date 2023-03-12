@@ -39,32 +39,29 @@ interface Result {
 
 const fetchMovies = async (category: string | number) => {
   const res = await fetch(
-    `${process.env.NEXT_TMDB_API_URL}/movie/${category}?api_key=${process.env.NEXT_TMDB_API_KEY}&language=en-US`
+    `${process.env.NEXT_TMDB_API_URL}/movie/${category}?api_key=${process.env.NEXT_TMDB_API_KEY}&language=en-US`,
+    { next: { revalidate: 30 } }
   );
   const movie: IMovie = await res.json();
   return movie;
 };
 
-const page = async ({ params: { category } }: Props) => {
+const Movies = async ({ params: { category } }: Props) => {
   const movie = await fetchMovies(category);
   return (
-    <div className="pl-56 pt-12 h-screen bg-white dark:bg-black">
-      <div className="h-full overflow-y-auto p-4 dark:text-white">
-        <div className="flex flex-wrap gap-5">
-          {movie.results.map((item: Result, index) => (
-            <MovieCard
-              key={index}
-              id={item.id}
-              title={item.title}
-              releaseDate={item.release_date}
-              posterPath={item.poster_path}
-              voteAverage={item.vote_average}
-            />
-          ))}
-        </div>
-      </div>
+    <div className="flex flex-wrap gap-5">
+      {movie.results.map((item: Result, index) => (
+        <MovieCard
+          key={index}
+          id={item.id}
+          title={item.title}
+          releaseDate={item.release_date}
+          posterPath={item.poster_path}
+          voteAverage={item.vote_average}
+        />
+      ))}
     </div>
   );
 };
 
-export default page;
+export default Movies;
