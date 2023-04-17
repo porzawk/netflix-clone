@@ -76,118 +76,120 @@ const Detail = async ({ params: { id } }: Props) => {
   const year = movieDetail.release_date.split("-")[0];
 
   return (
-    <div className="w-full flex gap-4 px-36 py-10">
-      <div className="flex flex-col gap-2">
-        <Image
-          src={`${process.env.NEXT_TMDB_IMAGE_ORINAL_URL}${movieDetail.poster_path}`}
-          alt={movieDetail.title}
-          className="rounded-2xl border border-gray-600"
-          width="400"
-          height="500"
-        />
-        <Social
-          facebook={externalId.facebook_id}
-          instagram={externalId.instagram_id}
-          twitter={externalId.twitter_id}
-        />
-        {/* Movie Info */}
-        <div className="grid grid-cols-2 gap-2">
-          <div>
-            <p className="font-bold">Status</p>
-            <p className="text-sm text-gray-400">{movieDetail.status}</p>
+    <>
+      <div className="w-full flex gap-4 px-36 py-10 justify-center">
+        <div className="flex flex-col gap-2">
+          <Image
+            src={`${process.env.NEXT_TMDB_IMAGE_ORINAL_URL}${movieDetail.poster_path}`}
+            alt={movieDetail.title}
+            className="rounded-2xl border border-gray-600"
+            width="400"
+            height="500"
+          />
+          <Social
+            facebook={externalId.facebook_id}
+            instagram={externalId.instagram_id}
+            twitter={externalId.twitter_id}
+          />
+          {/* Movie Info */}
+          <div className="grid grid-cols-2 gap-2">
+            <div>
+              <p className="font-bold">Status</p>
+              <p className="text-sm text-gray-400">{movieDetail.status}</p>
+            </div>
+            <div>
+              <p className="font-bold">Original Language</p>
+              <p className="text-sm text-gray-400">
+                {movieDetail.original_language}
+              </p>
+            </div>
+            <div>
+              <p className="font-bold">Budget</p>
+              <p className="text-sm text-gray-400">{movieDetail.budget}</p>
+            </div>
+            <div>
+              <p className="font-bold">Revenue</p>
+              <p className="text-sm text-gray-400">{movieDetail.revenue}</p>
+            </div>
           </div>
-          <div>
-            <p className="font-bold">Original Language</p>
-            <p className="text-sm text-gray-400">
-              {movieDetail.original_language}
-            </p>
-          </div>
-          <div>
-            <p className="font-bold">Budget</p>
-            <p className="text-sm text-gray-400">{movieDetail.budget}</p>
-          </div>
-          <div>
-            <p className="font-bold">Revenue</p>
-            <p className="text-sm text-gray-400">{movieDetail.revenue}</p>
+          {/* Keyword */}
+          <p className="font-bold">Keywords</p>
+          <div className="flex flex-wrap w-[400px] gap-2">
+            {keyword.keywords.map((item, index) => (
+              <span
+                key={index}
+                className="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300"
+              >
+                {item.name}
+              </span>
+            ))}
           </div>
         </div>
-        {/* Keyword */}
-        <p className="font-bold">Keywords</p>
-        <div className="flex flex-wrap w-[400px] gap-2">
-          {keyword.keywords.map((item, index) => (
-            <span
+        <div className="flex flex-col relative">
+          <Image
+            src={`${process.env.NEXT_TMDB_IMAGE_ORINAL_URL}${movieDetail.backdrop_path}`}
+            alt={movieDetail.title}
+            className="rounded-t-lg bg-gradient-to-b from-blue-400 to-transparent relative"
+            width="800"
+            height="1000"
+          />
+          <div className=" w-[800px] relative -top-28">
+            <div className="bg-gradient-to-t from-black via-black  w-full p-4">
+              {/* Title */}
+              <h3 className="text-3xl font-bold">
+                {movieDetail.title} ({year})
+              </h3>
+              {/* Sub title */}
+              <div className="flex justify-between mb-3">
+                <div className="flex gap-3 items-center">
+                  <h6>
+                    {totalHours}h{totalMinutes}m
+                  </h6>
+                  <div className="flex gap-1 flex-wrap">
+                    {movieDetail.spoken_languages.map((item, index) => (
+                      <span
+                        key={index}
+                        className="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300"
+                      >
+                        {item.name}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex gap-3 items-center">
+                  <h2 className="font-bold">Score:</h2>
+                  <ScoreRating rating={movieDetail.vote_average} />
+                  <h2>({movieDetail.vote_count})</h2>
+                </div>
+              </div>
+              {/* Overview */}
+              <div className="flex flex-col mb-3">
+                <h1 className="font-bold text-xl">Overview</h1>
+                <h1>{movieDetail.overview}</h1>
+              </div>
+            </div>
+
+            <Trailer videos={video.results} />
+          </div>
+        </div>
+      </div>
+      {/* Top Cast */}
+      <div className="flex flex-col mb-3 p-4 relative -top-28">
+        <h1 className="font-bold text-xl">Top Cast</h1>
+        <div className="flex flex-1 py-4 gap-2 overflow-auto scrollbar-thin scrollbar-thumb-[#363636] scrollbar-track-[#1f1f1f]">
+          {credit.cast.map((item, index) => (
+            <CastCard
               key={index}
-              className="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300"
-            >
-              {item.name}
-            </span>
+              id={item.id}
+              name={item.name}
+              character={item.character}
+              profilePath={item.profile_path}
+            />
           ))}
         </div>
       </div>
-      <div className="flex flex-col relative">
-        <Image
-          src={`${process.env.NEXT_TMDB_IMAGE_ORINAL_URL}${movieDetail.backdrop_path}`}
-          alt={movieDetail.title}
-          className="rounded-t-lg bg-gradient-to-b from-blue-400 to-transparent relative"
-          width="800"
-          height="1000"
-        />
-        <div className=" w-[800px] relative -top-28">
-          <div className="bg-gradient-to-t from-black via-black  w-full p-4">
-            {/* Title */}
-            <h3 className="text-3xl font-bold">
-              {movieDetail.title} ({year})
-            </h3>
-            {/* Sub title */}
-            <div className="flex justify-between mb-3">
-              <div className="flex gap-3 items-center">
-                <h6>
-                  {totalHours}h{totalMinutes}m
-                </h6>
-                <div className="flex gap-1 flex-wrap">
-                  {movieDetail.spoken_languages.map((item, index) => (
-                    <span
-                      key={index}
-                      className="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300"
-                    >
-                      {item.name}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <div className="flex gap-3 items-center">
-                <h2 className="font-bold">Score:</h2>
-                <ScoreRating rating={movieDetail.vote_average} />
-                <h2>({movieDetail.vote_count})</h2>
-              </div>
-            </div>
-            {/* Overview */}
-            <div className="flex flex-col mb-3">
-              <h1 className="font-bold text-xl">Overview</h1>
-              <h1>{movieDetail.overview}</h1>
-            </div>
-          </div>
-
-          <Trailer videos={video.results} />
-          {/* Top Cast */}
-          <div className="flex flex-col mb-3 p-4">
-            <h1 className="font-bold text-xl">Top Cast</h1>
-            <div className="flex flex-1 w-[770px] p-4  gap-2 overflow-auto scrollbar-thin scrollbar-thumb-[#363636] scrollbar-track-[#1f1f1f]">
-              {credit.cast.map((item, index) => (
-                <CastCard
-                  key={index}
-                  id={item.id}
-                  name={item.name}
-                  character={item.character}
-                  profilePath={item.profile_path}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    </>
   );
 };
 

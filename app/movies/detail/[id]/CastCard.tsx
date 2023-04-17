@@ -10,7 +10,7 @@ type Props = {
 
 const CastCard = ({ id, name, character, profilePath }: Props) => {
   return (
-    <div className="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 transition-transform hover:scale-105">
+    <div className="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-900 dark:border-gray-700 transition-transform hover:scale-105">
       <div className="flex w-40 flex-col justify-start h-full pb-2">
         <Image
           src={

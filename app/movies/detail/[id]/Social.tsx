@@ -12,7 +12,6 @@ type Props = {
 };
 
 const Social = (props: Props) => {
-  console.log(props);
   return (
     <div className="flex justify-center gap-2 mt-2">
       {props.facebook && (

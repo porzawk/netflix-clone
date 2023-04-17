@@ -20,7 +20,7 @@ const MovieCard = ({
 }: Props) => {
   const year = releaseDate.split("-")[0];
   return (
-    <div className="max-w-sm w-52 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 transition-transform hover:scale-105">
+    <div className="max-w-sm w-52 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-900 dark:border-gray-700 transition-transform hover:scale-105">
       <div className="flex flex-col justify-between h-full pb-2">
         <Link href={`/movies/detail/${id}`}>
           <Image
