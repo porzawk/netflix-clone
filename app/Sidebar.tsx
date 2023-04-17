@@ -22,7 +22,7 @@ const MenuItem = ({ id, title, icon }: MenuItemProps) => {
         href={`/movies/${id}`}
         className={`flex items-center p-2 px-3 text-base font-normal text-gray-900 rounded-lg ${
           pathname?.includes(`/movies/${id}`) ? "bg-red-700" : ""
-        } dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-red-700`}
+        } dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-red-900`}
       >
         {IconWithCustomSize}
         <span className="ml-3">{title}</span>
