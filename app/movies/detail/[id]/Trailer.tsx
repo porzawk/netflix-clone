@@ -12,7 +12,10 @@ const Trailer = ({ videos }: { videos: IVideos[] }) => {
   );
   return (
     <div className="flex justify-center mb-3">
-      <ReactPlayer url={`https://www.youtube.com/watch?v=${youtube?.key}`} />
+      <ReactPlayer
+        url={`https://www.youtube.com/watch?v=${youtube?.key}`}
+        controls={true}
+      />
     </div>
   );
 };

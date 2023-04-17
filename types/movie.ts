@@ -120,3 +120,24 @@ export interface IVideos {
   published_at: string;
   id: string;
 }
+
+//* ------------- Movie Keyword -------------------*//
+export interface IKeyword {
+  id: number;
+  keywords: IKeywords[];
+}
+
+export interface IKeywords {
+  id: number;
+  name: string;
+}
+
+//* ------------- Movie External -------------------*//
+export interface IExternal {
+  id: number;
+  imdb_id: string;
+  wikidata_id: any;
+  facebook_id: string;
+  instagram_id: string;
+  twitter_id: string;
+}
