@@ -7,21 +7,23 @@ import { categories, genres } from "../constants";
 
 type MenuItemProps = {
   id: string | number;
+  type: "categories" | "genres";
   title: string;
   icon: JSX.Element;
 };
 
-const MenuItem = ({ id, title, icon }: MenuItemProps) => {
+const MenuItem = ({ id, type, title, icon }: MenuItemProps) => {
   const pathname = usePathname();
   const IconWithCustomSize = React.cloneElement(icon, {
     size: 24,
   });
+  let url = `/movies/${id}`;
   return (
     <li>
       <Link
-        href={`/movies/${id}`}
+        href={url}
         className={`flex items-center p-2 px-3 text-base font-normal text-gray-900 rounded-lg ${
-          pathname?.includes(`/movies/${id}`) ? "bg-red-700" : ""
+          pathname?.includes(url) ? "bg-red-700" : ""
         } dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-red-900`}
       >
         {IconWithCustomSize}
@@ -48,14 +50,14 @@ const Sidebar = () => {
         <ul className="space-y-1">
           <p className="text-gray-500 ml-3">Categories</p>
           {categories.map((item, index) => (
-            <MenuItem key={index} {...item} />
+            <MenuItem key={index} type="categories" {...item} />
           ))}
         </ul>
         <hr className="h-px mb-2 bg-gray-200 border-0 dark:bg-gray-700"></hr>
         <ul className="space-y-1">
           <p className="text-gray-500 ml-3">Genres</p>
           {genres.map((item, index) => (
-            <MenuItem key={index} {...item} />
+            <MenuItem key={index} type="genres" {...item} />
           ))}
         </ul>
         {/* </IconContext.Provider> */}

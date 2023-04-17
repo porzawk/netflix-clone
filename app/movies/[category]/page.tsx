@@ -1,6 +1,7 @@
 import React from "react";
 import MovieCard from "./MovieCard";
 import { IMovie, IResult } from "types/movie";
+import { categories } from "@/constants/index";
 
 type Props = {
   params: {
@@ -8,11 +9,12 @@ type Props = {
   };
 };
 
-const fetchMovies = async (category: string | number) => {
-  const res = await fetch(
-    `${process.env.NEXT_TMDB_API_URL}/movie/${category}?api_key=${process.env.NEXT_TMDB_API_KEY}&language=en-US`,
-    { next: { revalidate: 30 } }
-  );
+const fetchMovies = async (category: string) => {
+  let url = `${process.env.NEXT_TMDB_API_URL}/movie/${category}?api_key=${process.env.NEXT_TMDB_API_KEY}&language=en-US`;
+  if (!categories.some((item) => item.id === category)) {
+    url = `${process.env.NEXT_TMDB_API_URL}/discover/movie?api_key=${process.env.NEXT_TMDB_API_KEY}&language=en-US&with_genres=${category}`;
+  }
+  const res = await fetch(url, { next: { revalidate: 30 } });
   const movie: IMovie = await res.json();
   return movie;
 };

@@ -18,7 +18,7 @@ const MovieCard = ({
   posterPath,
   voteAverage,
 }: Props) => {
-  const year = releaseDate.split("-")[0];
+  const year = releaseDate?.split("-")[0];
   return (
     <div className="max-w-sm w-52 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-900 dark:border-gray-700 transition-transform hover:scale-105">
       <div className="flex flex-col justify-between h-full pb-2">
@@ -32,7 +32,7 @@ const MovieCard = ({
           />
           <div className="p-2">
             <h5 className="text-base text-center whitespace-normal font-bold tracking-tight text-gray-900 dark:text-white">
-              {title} ({year})
+              {title} {year && `(${year})`}
             </h5>
           </div>
         </Link>
