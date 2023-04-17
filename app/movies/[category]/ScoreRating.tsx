@@ -18,7 +18,7 @@ const ScoreRating = ({ rating }: Props) => {
     <div className="flex items-center gap-1 justify-center">
       {/* Max score is 5 */}
       {[...Array(5)].map((item, index) => (
-        <BsFillStarFill className={fillStarColor(index + 1)} />
+        <BsFillStarFill key={index} className={fillStarColor(index + 1)} />
       ))}
     </div>
   );
